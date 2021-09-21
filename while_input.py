@@ -8,4 +8,4 @@ def func():
          result=input("I will keep asking this ,until you are not good.If you want me to stop, then type 'good':")
     print(result)
 func()
-    
+   
