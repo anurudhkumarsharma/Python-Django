@@ -24,3 +24,4 @@ c2=(8,10)
 myline = Line(c1,c2)
 print('The diatance is',myline.distance())
 print('the slope of the line is',myline.slope())
+j
