@@ -1,0 +1,7 @@
+print(hex(334))
+print(bin(334))
+print(abs(-334))
+print(round(334.4))
+print(round(334.467879,3))
+print(pow(2,3))
+print(2**3)
