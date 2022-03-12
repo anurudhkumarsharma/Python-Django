@@ -1,0 +1,8 @@
+from re import X
+from ipywidgets import interact,interactive,fixed
+import ipywidgets as widgets
+
+def func(x):
+    return x      
+
+interact(func,x=10)
