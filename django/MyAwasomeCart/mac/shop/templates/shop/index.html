@@ -1,0 +1,196 @@
+{% extends 'shop/basic.html' %}
+
+{% block css%} 
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-9px;
+          }
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+          .col-md-3 img{
+          width:100%;
+          height:auto;
+          }
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+          body .carousel-indicators{
+          bottom: 0;
+          }
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: blue;
+          }
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+  {%endblock %}
+
+{% block body%} 
+{% load static %}
+<div class="container">
+<div id="demo" class="carousel slide my-1" data-bs-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-bs-target="#demo" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#demo" data-bs-slide-to="1" ></li>
+      <li data-bs-target="#demo" data-bs-slide-to="2" ></li>
+    </ul>
+
+    <!--Slideshow starts here -->
+    <div class="container carousel-inner no-padding">
+
+      <div class="carousel-item active">
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test1.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+                <6 class="card-title">Card title</6>
+                <p class="card-text">Some quick example text to build on the card title.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+       </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <6 class="card-title">Card title</6>
+              <p class="card-text">Some quick example text to build on the card title.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test1.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <6 class="card-title">Card title</6>
+              <p class="card-text">Some quick example text to build on the card title.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <6 class="card-title">Card title</6>
+              <p class="card-text">Some quick example text to build on the card title.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="carousel-item">
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test1.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+                <6 class="card-title">Card title</6>
+                <p class="card-text">Some quick example text to build on the card title.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <6 class="card-title">Card title</6>
+              <p class="card-text">Some quick example text to build on the card title.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test1.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <6 class="card-title">Card title</6>
+              <p class="card-text">Some quick example text to build on the card title.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <6 class="card-title">Card title</6>
+              <p class="card-text">Some quick example text to build on the card title.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test1.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+                <6 class="card-title">Card title</6>
+                <p class="card-text">Some quick example text to build on the card title.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+       </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <6 class="card-title">Card title</6>
+              <p class="card-text">Some quick example text to build on the card title.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test1.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <6 class="card-title">Card title</6>
+              <p class="card-text">Some quick example text to build on the card title.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 17rem; height: 17rem;">
+            <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <6 class="card-title">Card title</6>
+              <p class="card-text">Some quick example text to build on the card title.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+    <!-- left and right controls for the slide -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+
+{%endblock %}
