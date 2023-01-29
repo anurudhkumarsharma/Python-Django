@@ -2,18 +2,28 @@
 {% block title%} Store247 - Best Ecommerce Website{% endblock %}
 {% block css %}
 
- 
-  
+
+
+
+
+.flash-sale {
+    background-color: #F5A623; /* set background color to a bright orange */
+    color: white; /* set text color to white */
+    padding: 8px; /* add some padding around the text */
+    font-size: 22px; /* increase font size for emphasis */
+    font-weight: bold; /* make the text bold for emphasis */
+    text-align: center; /* center the text within the container */
+    border-radius: 5px; /* add some roundness to the corners of the container */
+} 
+
+
 .col-md-3
 {
 display: inline-block;
 margin-left:-4px;
 }
 
-
-
-
-
+ 
 
 .col-md-3 img{
 width: 270px;
@@ -72,13 +82,30 @@ padding-right: 0;
 .navbar.fixed-top a {
   color: white;
 }
+
+.navbar-brand {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: default;
+    letter-spacing: 1px;
+    }
+
+.custom-card {
+    width: 300px; /* or any other width value you want */
+    height: 450px; /* or any other height value you want */
+  }
+
+.carousel-container {
+  text-align: left;
+}
+
 {% endblock %}
 {% block body %}
 {% load static %}
 <div class="container">
     <!--Slideshow starts here -->
     {% for product, range, nSlides in allProds %}
-    <h5 class="my-4">Flash Sale On {{product.0.category}} - Recommended Items</h5>
+    <h5 class="flash-sale my-4">Flash Sale On {{product.0.category}} - Recommended Items</h5>
     <div class="row">
         <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
             <ul class="carousel-indicators">
@@ -87,20 +114,20 @@ padding-right: 0;
                 <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
                 {% endfor %}
             </ul>
-            <div class="container carousel-inner no-padding">
+            <div class="container carousel-inner no-padding carousel-container  ">
                 <div class="carousel-item active">
                     {% for i in product %}
                     <div class="col-xs-3 col-sm-3 col-md-3">
-                        <div class="card align-items-center" style="width: 18rem;">
+                        <div class="card align-items-center  custom-card" style="width: 18rem;">
                             <img src='/media/{{i.image}}' class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
                                 <p class="card-text">{{i.desc|slice:"0:53"}}...</p>
                                 <h6 class="card-title" id="pricepr{{i.id}}">{{i.price}}</h6>
                                 <span id="divpr{{i.id}}" class="divpr">
-                                    <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
+                                    <button id="pr{{i.id}}" class="btn btn-primary cart add-to-cart-button">Add To Cart</button>
                                 </span>
-                                <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-primary cart">QuickView</button></a>
+                                <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-primary cart quickview-button">QuickView</button></a>
                             </div>
                         </div>
                     </div>
@@ -125,6 +152,11 @@ padding-right: 0;
 {% endblock %}
 {% block js %}
 <script>
+    $(document).ready(function(){
+        $("#add-to-cart").click(function(){
+            $(this).replaceWith('<button class="minus-button">-</button><button class="plus-button">+</button>');
+        });
+    });
 
     document.addEventListener("scroll", function () {
         const navbar = document.querySelector(".navbar");
@@ -225,5 +257,7 @@ $('.divpr').on("click", "button.plus", function() {
     document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
     updateCart(cart);
 });
+document.getElementById("home").classList.add("selected");
+
 </script>
 {% endblock %}

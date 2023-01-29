@@ -2,7 +2,24 @@
 <html lang="en">
   <head>
    
+    <style>
+      .navbar-brand {
+        font-size: 22rem; /* Increase the font size */
+        font-weight: bold; /* Make the font bold */
+        color: #0000FF; /* Change the text color to blue */
+        text-shadow: 2px 2px 4px #000000; /* Add a text shadow */
+      }
 
+      .selected {
+        background-color: #727678;
+        border-radius: .25rem;
+        width: auto;
+        height: auto;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 10);
+      }
+    </style>
+
+  
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,22 +42,18 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li id="home" class="nav-item">
         <a class="nav-link" href="/shop">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li id="about" class="nav-item">
         <a class="nav-link" href="/shop/about">About Us</a>
       </li>
-
-      <li class="nav-item">
+      <li id="tracker" class="nav-item">
         <a class="nav-link" href="/shop/tracker">Tracker</a>
       </li>
-
-      <li class="nav-item">
+      <li id="contact" class="nav-item">
         <a class="nav-link" href="/shop/contact">Contact Us</a>
       </li>
-
-
     </ul>
     <form method='get' action='/shop/search/' class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
@@ -64,6 +77,23 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
   crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    {% block js %} {% endblock %}
+    {% block js %} 
+    <script>
+      const navbarItems = document.querySelectorAll(".nav-item");
+  
+      navbarItems.forEach((item) => {
+        item.addEventListener("click", (event) => {
+          // Remove the "selected" class from all navbar items
+          navbarItems.forEach((item) => item.classList.remove("selected"));
+  
+          // Add the "selected" class to the clicked navbar item
+          event.target.classList.add("selected");
+        });
+      });
+    
+    </script>
+    
+    
+    {% endblock %}
   </body>
 </html>
