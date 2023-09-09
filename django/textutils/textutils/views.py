@@ -1,50 +1,55 @@
+# views.py
+
 from django.http import HttpResponse
 from django.shortcuts import render
 
 def index(request):
-    return render(request,"index.html")
+    return render(request, "index.html")
+
+
+def contact(request):
+    return render(request, "contact.html")
+
+
 
 def analyze(request):
     # Get the text
     djtext = request.POST.get('text', 'default')
 
-    removepunc=request.POST.get('removepunc','off')
-    fullcaps=request.POST.get('fullcaps','off')
-    newlineremover=request.POST.get('newlineremover','off')
-    extraspaceremover=request.POST.get('extraspaceremover','off')
+    removepunc = request.POST.get('removepunc', 'off')
+    fullcaps = request.POST.get('fullcaps', 'off')
+    newlineremover = request.POST.get('newlineremover', 'off')
+    extraspaceremover = request.POST.get('extraspaceremover', 'off')
 
-    if removepunc == "on":
-        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
-        analyzed = ""
-        for char in djtext:
-            if char not in punctuations:
-                analyzed = analyzed + char
-        params = {'purpose': 'Removed Punctuations', 'analyzed_text': analyzed}
-        djtext=analyzed
-        # return render(request, 'analyze.html', params)
-    if fullcaps=="on":
-        analyzed=""
-        for char in djtext:
-            analyzed=analyzed+char.upper()
-        params = {'purpose': 'Change To Uppercase', 'analyzed_text': analyzed}
-        djtext=analyzed
-        # return render(request, 'analyze.html', params)
-    if newlineremover=="on":
-        analyzed=""
-        for char in djtext:
-            if char!="\n":
-                analyzed=analyzed+char
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
-        # Analyze the text
-        djtext=analyzed
-        # return render(request, 'analyze.html', params)
-    if (extraspaceremover == "on"):
-        analyzed = ""
-        for index, char in enumerate(djtext):
-            if not (djtext[index] == " " and djtext[index + 1] == " "):
-                analyzed = analyzed + char
-        params = {'purpose': 'Change To Uppercase', 'analyzed_text': analyzed}
-        djtext=analyzed
-        # return render(request, 'analyze.html', params)
+    # Initialize the params dictionary with default values
+    params = {'purpose': '', 'analyzed_text': djtext}
+
+    # Check if no transformations are selected
+    if removepunc == fullcaps == newlineremover == extraspaceremover == 'off':
+        params['purpose'] = 'Please select at least one option'
+        params['analyzed_text'] = 'Please enable at least one transformation option.'
+    else:
+        analyzed = djtext  # Initialize analyzed text with the input text
+
+        if removepunc == "on":
+            # Remove punctuations
+            punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+            analyzed = ''.join(char for char in analyzed if char not in punctuations)
+            params = {'purpose': 'Removed Punctuations', 'analyzed_text': analyzed}
+
+        if fullcaps == "on":
+            # Convert to uppercase
+            analyzed = analyzed.upper()
+            params = {'purpose': 'Change To Uppercase', 'analyzed_text': analyzed}
+
+        if newlineremover == "on":
+            # Remove newlines
+            analyzed = analyzed.replace('\n', ' ')
+            params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+
+        if extraspaceremover == "on":
+            # Remove extra spaces
+            analyzed = ' '.join(analyzed.split())
+            params = {'purpose': 'Extra Space Is Removed', 'analyzed_text': analyzed}
 
     return render(request, 'analyze.html', params)
