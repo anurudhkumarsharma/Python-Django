@@ -22,6 +22,7 @@ urlpatterns = [
     path('home',views.index,name='home'),
     path('analyze',views.analyze,name='analyze'),
     path('contact',views.contact,name='contact'),
+    path('aboutus',views.aboutus,name='aboutus'),
     #path('feature',views.feature,name='feature'),
     #path('capitalizefirst',views.capfirst,name='capitalizefirst'),
     #path('newlineremove',views.newlineremove,name='capfirst'),

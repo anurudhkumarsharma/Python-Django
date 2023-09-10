@@ -6,11 +6,11 @@ from django.shortcuts import render
 def index(request):
     return render(request, "index.html")
 
-
 def contact(request):
     return render(request, "contact.html")
 
-
+def aboutus(request):
+    return render(request, "aboutus.html")
 
 def analyze(request):
     # Get the text
@@ -43,9 +43,12 @@ def analyze(request):
             params = {'purpose': 'Change To Uppercase', 'analyzed_text': analyzed}
 
         if newlineremover == "on":
-            # Remove newlines
+        # Remove newlines only if the "new line remover" function is enabled
             analyzed = analyzed.replace('\n', ' ')
-            params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+            params['purpose'] = 'Removed NewLines'
+            params['analyzed_text'] = analyzed
+        else:
+            params['purpose'] = 'Analysis without New Line Remover'  # Set a purpose for the analysis without newline removal
 
         if extraspaceremover == "on":
             # Remove extra spaces
